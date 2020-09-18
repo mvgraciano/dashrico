@@ -36,6 +36,7 @@
                 <?php if (!$shop) : ?>
                     <option selected>-- SELECIONE --</option>
                 <?php endif; ?>
+                <option value="0" <?= ($shop->status == 0 ? 'selected' : "") ?>>Em Construção</option>
                 <option value="1" <?= ($shop->status == 1 ? 'selected' : "") ?>>Ativo</option>
                 <option value="2" <?= ($shop->status == 2 ? 'selected' : "") ?>>Pausado</option>
                 <option value="3" <?= ($shop->status == 3 ? 'selected' : "") ?>>Cancelado</option>

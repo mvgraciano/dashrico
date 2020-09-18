@@ -118,7 +118,7 @@ class Ricoshop extends Controller
                 $shop->contrato = $data["contrato"];
                 $shop->status = $data["status"];
                 $shop->obs = $data["osbervacao"];
-                if ($shop->save()) {
+                if (!$shop->save()) {
                     $success = true;
                     $message = $this->message->success("Registro atualizado com sucesso")->render();
                 } else {

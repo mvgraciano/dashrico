@@ -92,6 +92,10 @@ class Ricoshop extends Model
     public function verificarStatus()
     {
         $status = $this->status;
+        if ($status == 0) {
+            return 'Em Construção';
+        }
+
         if ($status == 1) {
             return 'Ativo';
         }
