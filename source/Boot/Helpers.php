@@ -31,6 +31,16 @@ function str_slug(string $string): string
 }
 
 /**
+ * @param string $string
+ * @return string
+ */
+function str_clean_special_chars(string $string): string
+{
+    $string = str_replace('-', ' ', str_replace(' ', '-', $string));
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+}
+
+/**
  * @param string $path
  * @return string
  */
@@ -91,4 +101,27 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
     }
 
     return CONF_URL_BASE . "/themes/{$theme}";
+}
+
+/**
+ * @return string
+ */
+function csrf_input(): string
+{
+    $session = new \Source\Core\Session();
+    $session->csrf();
+    return "<input type='hidden' name='csrf' value='" . ($session->csrf_token ?? "") . "'/>";
+}
+
+/**
+ * @param $request
+ * @return bool
+ */
+function csrf_verify($request): bool
+{
+    $session = new \Source\Core\Session();
+    if (empty($session->csrf_token) || empty($request['csrf']) || $request['csrf'] != $session->csrf_token) {
+        return false;
+    }
+    return true;
 }

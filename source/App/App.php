@@ -13,6 +13,6 @@ class App extends Controller
 
     public function home()
     {
-        var_dump('App:Home');
+        echo $this->view->render("home", []);
     }
 }

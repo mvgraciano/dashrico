@@ -20,7 +20,15 @@ class Produto extends Controller
         $pager = new Pager(url("/produtos/"));
         $pager->pager(count($productList), 10, $dataPage);
 
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - Produtos",
+            CONF_SITE_NAME . " - Produtos",
+            url("/produtos"),
+            ""
+        );
+
         echo $this->view->render("products", [
+            "head" => $head,
             "produtos" => (new ModelProduto())->load_per_page(10, $dataPage),
             "paginator" => $pager->render()
         ]);

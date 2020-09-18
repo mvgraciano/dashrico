@@ -33,6 +33,7 @@ class ComposerStaticInit41b3da336cf4de16072b5d3488c46be4
         array (
             'CoffeeCode\\Router\\' => 18,
             'CoffeeCode\\Paginator\\' => 21,
+            'CoffeeCode\\Optimizer\\' => 21,
         ),
     );
 
@@ -52,6 +53,10 @@ class ComposerStaticInit41b3da336cf4de16072b5d3488c46be4
         'CoffeeCode\\Paginator\\' => 
         array (
             0 => __DIR__ . '/..' . '/coffeecode/paginator/src',
+        ),
+        'CoffeeCode\\Optimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/optimizer/src',
         ),
     );
 

@@ -1,3 +1,1 @@
-<?php $v->layout("_theme"); ?>
-
-<article>Home</article>
+<?php $v->layout("_theme"); var_dump('App:Home'); ?>

@@ -3,6 +3,7 @@
 require_once 'vendor/autoload.php';
 
 use CoffeeCode\Router\Router;
+use Source\Model\Ricoshop;
 
 ob_start();
 
@@ -18,7 +19,11 @@ $route->get("/{page}", "Produto:productsIndex");
 
 $route->group("/ricoshops");
 $route->get("/", "Ricoshop:ricoshopsIndex");
+$route->post("/", "Ricoshop:ricoshopsIndex");
 $route->get("/{page}", "Ricoshop:ricoshopsIndex");
+$route->get("/loja/{nome}", "Ricoshop:show");
+$route->get("/{id}/edit", "Ricoshop:edit");
+$route->post("/{id}/edit", "Ricoshop:edit");
 
 $route->group("/ops");
 $route->get("/{errcode}", "Coffee:notFound");
