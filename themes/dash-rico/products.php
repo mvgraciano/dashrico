@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center">
-                        <H1>PRODUTOS</H1>
+                        <h2>PRODUTOS</h2>
                     </div>
                     <div class="card-body">
                         <table class="table table-sm table-striped table-hover">

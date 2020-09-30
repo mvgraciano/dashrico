@@ -13,6 +13,7 @@ class App extends Controller
 
     public function home()
     {
-        echo $this->view->render("home", ["head" => ""]);
+        // echo $this->view->render("home", ["head" => ""]);
+        redirect("/ricoshops");
     }
 }

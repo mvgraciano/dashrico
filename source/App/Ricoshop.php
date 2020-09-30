@@ -67,7 +67,6 @@ class Ricoshop extends Controller
         $shopName = filter_var($data["nome"], FILTER_SANITIZE_STRIPPED);
         $name = implode(" ", explode("-", $data["nome"]));
         $shop = (new ModelRicoshop())->find("nome_empresa LIKE :nome", "nome=%{$name}%")->fetch();
-        $shopSlugName = str_slug("{$name}");
 
         if (!$shop) {
             redirect("/ricoshops");
@@ -89,7 +88,7 @@ class Ricoshop extends Controller
     public function edit(array $data)
     {
         $modelRicoshop = new ModelRicoshop();
-        $shop = $modelRicoshop->findById($data["id"])->order("");
+        $shop = $modelRicoshop->findById($data["id"]);
         $success = true;
 
         if (!$shop) {
@@ -111,14 +110,14 @@ class Ricoshop extends Controller
                 $shop->id = $data["idShop"];
                 $shop->nome_empresa = $data["nome"];
                 $shop->cnpj = str_clean_special_chars($data["cnpj"]);
-                $shop->cod_referencia = $data["id"];
+                $shop->cod_referencia = $data["referencia"];
                 $shop->dominio = $data["dominio"];
                 $shop->telefone = $data["telefone"];
                 $shop->email = $data["email"];
                 $shop->contrato = $data["contrato"];
                 $shop->status = $data["status"];
                 $shop->obs = $data["osbervacao"];
-                if (!$shop->save()) {
+                if ($shop->save()) {
                     $success = true;
                     $message = $this->message->success("Registro atualizado com sucesso")->render();
                 } else {

@@ -7,23 +7,30 @@ class Produto
 {
     public function reloadProducts()
     {
-        $file = fopen(__DIR__ . '/../../files/products.json', "w");
         $fc = file_get_contents('http://192.168.0.192/modules/product/servlet/ProductServlet.class.php?action=ws-product');
-        file_put_contents(
-            __DIR__ . '/../../files/products.json', 
-            str_replace("Erro em operação no Banco de Dados SQL Server: o erro não foi reconhecido pelo sistema. Informe ao desenvolvedor o seguinte código: 20018", "", $fc)
-        );
-        fclose($file);
+        if ($fc) {
+            $file = fopen(__DIR__ . '/../../files/products.json', "w");
+            file_put_contents(
+                __DIR__ . '/../../files/products.json',
+                str_replace("Erro em operação no Banco de Dados SQL Server: o erro não foi reconhecido pelo sistema. Informe ao desenvolvedor o seguinte código: 20018", "", $fc)
+            );
+            fclose($file);
+        }
     }
 
-    public function load_all(){
-        return readJsonFile(__DIR__ . '/../../files/products.json')['productList'];
+    public function load_all()
+    {
+        $products = readJsonFile(__DIR__ . '/../../files/products.json');
+        if ($products) {
+            return $products['productList'];
+        }
+        return $products;
     }
 
     public function findById(int $id)
     {
-        foreach(readJsonFile(__DIR__ . '/../../files/products.json')['productList'] as $product){
-            if($product['vpxProductId'] == $id){
+        foreach (readJsonFile(__DIR__ . '/../../files/products.json')['productList'] as $product) {
+            if ($product['vpxProductId'] == $id) {
                 return $product;
             }
         }
@@ -35,8 +42,8 @@ class Produto
         $i = ($produtoInicial == 0 ? 0 : $produtoInicial - 1);
         $products = [];
         $productList = readJsonFile(__DIR__ . '/../../files/products.json')['productList'];
-        while ($i < $qtd + ($produtoInicial - 1 ) && $i < count($this->load_all())) {
-            if($productList[$i]){
+        while ($i < $qtd + ($produtoInicial - 1) && $i < count($this->load_all())) {
+            if ($productList[$i]) {
                 array_push($products, $productList[$i]);
             }
             $i++;
@@ -44,7 +51,8 @@ class Produto
         return $products;
     }
 
-    public function load_per_page(int $qtd = 10, int $page = 1){
+    public function load_per_page(int $qtd = 10, int $page = 1)
+    {
         $inicial = ($page - 1) * $qtd;
         return $this->load_qtd_products($qtd, $inicial);
     }

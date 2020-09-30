@@ -1,12 +1,60 @@
 <?php
 
 /**
+ * ##################
+ * ###   FORMAT   ###
+ * ##################
+ */
+
+/**
  * @param float $value
- * @return float
  */
 function brl_format(float $value = 0){
     return number_format($value, 2, ',', '.');
 }
+
+/**
+ * @param $value
+ * @return string
+ */
+function brl_to_defaut($value) {
+    $value = (float)str_replace(",", ".", $value);
+    return number_format($value, 2, '.', '');
+}
+
+/**
+ * @param string $date
+ * @param string $format
+ * @return string
+ */
+function date_fmt(string $date = "now", string $format = "d/m/Y H\hi"): string
+{
+    return (new DateTime($date))->format($format);
+}
+
+/**
+ * @param string $date
+ * @return string
+ */
+function date_fmt_br(string $date = "now"): string
+{
+    return (new DateTime($date))->format(CONF_DATE_BR);
+}
+
+/**
+ * @param string $date
+ * @return string
+ */
+function date_fmt_app(string $date = "now"): string
+{
+    return (new DateTime($date))->format(CONF_DATE_APP);
+}
+
+/**
+ * ##################
+ * ###   STRING   ###
+ * ##################
+ */
 
 /**
  * @param string $string
@@ -39,6 +87,12 @@ function str_clean_special_chars(string $string): string
     $string = str_replace('-', ' ', str_replace(' ', '-', $string));
     return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
 }
+
+/**
+ * ###############
+ * ###   URL   ###
+ * ###############
+ */
 
 /**
  * @param string $path
@@ -102,6 +156,12 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
 
     return CONF_URL_BASE . "/themes/{$theme}";
 }
+
+/**
+ * #####################
+ * ###   REQUEST'S   ###
+ * #####################
+ */
 
 /**
  * @return string

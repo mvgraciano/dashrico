@@ -13,11 +13,8 @@ class Ricoshop extends Model
     }
 
     /**
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $email
-     * @param string $password
-     * @param string|null $document
+     * @param string $nome_empresa
+     * @param string $cnpj
      * @return Ricoshop
      */
     public function bootstrap(
@@ -89,7 +86,20 @@ class Ricoshop extends Model
         return true;
     }
 
-    public function verificarStatus()
+    /**
+     * @return AssinaturaRicoshop|null
+     */
+    public function assinatura(): ?AssinaturaRicoshop
+    {
+        $assinatura = (new AssinaturaRicoshop())->find("loja_id = :loja_id", "loja_id={$this->id}")->fetch();
+        if ($assinatura) {
+            return $assinatura;
+        }
+
+        return null;
+    }
+
+    public function verificarStatus(): string
     {
         $status = $this->status;
         if ($status == 0) {

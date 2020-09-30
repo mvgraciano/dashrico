@@ -13,7 +13,7 @@ class PlanoRicoshop extends Model{
 
     /**
      * @param string $nome
-     * @param string $valor_mensal
+     * @param float $valor_mensal
      * @return PlanoRicoshop
      */
     public function boostrap(string $nome, float $valor_mensal){
@@ -29,6 +29,7 @@ class PlanoRicoshop extends Model{
             return false;
         }
 
+        /** Update */
         if (!empty($this->id)) {
             $planoId = $this->id;
 
@@ -44,8 +45,9 @@ class PlanoRicoshop extends Model{
             }
         }
 
+        /** Create */
         if(empty($this->id)){
-            if ($this->find("nome = :nome AND id != :id", "nome={$this->nome}&id={$planoId}", "id")->fetch()) {
+            if ($this->find("nome = :nome", "nome={$this->nome}", "id")->fetch()) {
                 $this->message->warning("O nome informado já está cadastrado");
                 return false;
             }
@@ -56,5 +58,8 @@ class PlanoRicoshop extends Model{
                 return false;
             }
         }
+
+        $this->data = ($this->findById($planoId))->data();
+        return true;
     }
 }

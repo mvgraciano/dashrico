@@ -36,7 +36,7 @@ abstract class Model
     /** @var array $protected no update or create */
     protected static $protected;
 
-    /** @var array $entity database table */
+    /** @var array $required database required fields */
     protected static $required;
 
     /**
@@ -50,7 +50,6 @@ abstract class Model
         self::$entity = $entity;
         self::$protected = array_merge($protected, ['created_at', "updated_at"]);
         self::$required = $required;
-
         $this->message = new Message();
     }
 

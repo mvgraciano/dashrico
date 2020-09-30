@@ -10,39 +10,32 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h2>RICOSHOPS - CADASTROS</h2>
+                        <h2>RICOSHOPS - PLANOS</h2>
                     </div>
                     <div class="card-body">
-                        <?php $v->insert("Ricoshops/form-new") ?>
+                        <?php $v->insert("Planos/form-new") ?>
                         <table class="table table-sm table-striped table-hover mt-4">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nome</th>
-                                    <th scope="col" class="text-right">Ref</th>
-                                    <th scope="col" class="text-right">CNPJ</th>
+                                    <th scope="col" class="text-right">Valor Mensal</th>
                                     <th scope="col" class="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($shops) : ?>
-                                    <?php foreach ($shops as $shop) : ?>
+                                <?php if ($planos) : ?>
+                                    <?php foreach ($planos as $plano) : ?>
                                         <tr>
-                                            <td scope="row"><?= $shop->id ?></th>
-                                            <td><?= $shop->nome_empresa ?></td>
-                                            <td class="text-right"><?= $shop->cod_referencia ?? "-" ?></td>
-                                            <td class="text-right"><?= $shop->cnpj ?></td>
-                                            <td class="text-center"><a class="btn btn-sm btn-success" href="<?= url("/ricoshops/loja/") . str_slug($shop->nome_empresa) ?>">Ver informações</a></td>
+                                            <td scope="row"><?= $plano->id ?></th>
+                                            <td><?= $plano->nome ?></td>
+                                            <td class="text-right"><?= brl_format($plano->valor_mensal) ?></td>
+                                            <td class="text-center"><a class="btn btn-sm btn-success" href="<?= url("/ricoshops/planos/") . str_slug($plano->nome) ?>">Ver informações</a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <?= $paginator; ?>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
