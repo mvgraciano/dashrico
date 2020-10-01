@@ -4,6 +4,8 @@ namespace Source\App;
 
 use DateTime;
 use Source\Core\Controller;
+use Source\Core\View;
+use Source\Support\Email;
 
 class LancamentoFinanceiro extends Controller
 {
@@ -152,5 +154,33 @@ class LancamentoFinanceiro extends Controller
             "message" => ($message ?? null),
             "idAssinatura" => $data['id']
         ]);
+    }
+
+    public function sendMail(array $data)
+    {
+        $lancamento = (new \Source\Model\LancamentoFinanceiro())->findById($data["id"]);
+        $assinatura = $lancamento->assinatura();
+        $shop = $assinatura->ricoshop();
+
+        $view = new View(__DIR__ . "/../../shared/views/email");
+        $message = $view->render("paid", [
+            "nome" => $shop->nome_empresa,
+            "lancamento" => $lancamento
+        ]);
+
+        $mail = (new Email())->bootstrap(
+            "Olá cliente, pague a sua fatura",
+            $message,
+            $shop->email,
+            $shop->nome_empresa
+        );
+
+        if($mail->send()){
+            $this->message->success("E-mail enviado com sucesso.")->flash();
+        } else {
+            $this->message->warning("Não foi possível enviar o e-mail, tente novamente em alguns minutos.")->flash();
+        }
+        
+        redirect("/ricoshops/assinaturas/{$assinatura->id}/financeiro");
     }
 }

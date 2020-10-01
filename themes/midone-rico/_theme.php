@@ -112,6 +112,8 @@
         </div>
         <?php if ($message) : ?>
             <?= $message; ?>
+        <?php else: ?>
+            <?= flash(); ?>
         <?php endif; ?>
         <?= $v->section("content"); ?>
     </div>

@@ -51,6 +51,21 @@ function date_fmt_app(string $date = "now"): string
 }
 
 /**
+ * ####################
+ * ###   VALIDATE   ###
+ * ####################
+ */
+
+/**
+ * @param string $email
+ * @return bool
+ */
+function is_email(string $email): bool
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+/**
  * ##################
  * ###   STRING   ###
  * ##################
@@ -184,4 +199,16 @@ function csrf_verify($request): bool
         return false;
     }
     return true;
+}
+
+/**
+ * @return string|null
+ */
+function flash(): ?string
+{
+    $session = new \Source\Core\Session();
+    if ($flash = $session->flash()) {
+        return $flash;
+    }
+    return null;
 }

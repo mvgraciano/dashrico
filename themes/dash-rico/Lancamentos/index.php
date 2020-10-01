@@ -41,6 +41,7 @@
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Valor</th>
                                     <th scope="col">Vencimento</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,9 @@
                                         <td><?= $lancamento->descricao ?></td>
                                         <td><?= brl_format($lancamento->valor) ?></td>
                                         <td class="<?= $lancamento->vencimentoClass() ?>"><?= date_fmt($lancamento->vencimento, "d/m/Y") ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-success" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/mail") ?>">Enviar E-mail</a>
+                                        </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

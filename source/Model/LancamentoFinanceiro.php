@@ -56,6 +56,11 @@ class LancamentoFinanceiro extends Model
         return true;
     }
 
+    public function assinatura(): AssinaturaRicoshop
+    {
+        return (new AssinaturaRicoshop())->findById($this->assinatura_id);
+    }
+
     public function vencimentoClass(): string
     {
         $now = new \DateTime();

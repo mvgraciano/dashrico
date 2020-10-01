@@ -28,6 +28,15 @@ define("CONF_SITE_NAME", "Portal Ricopeças");
 define("CONF_SITE_LANG", "pt_BR");
 
 /**
+ * ADDR
+ */
+define("CONF_ADDR_STREET", "Rua Florianópolis");
+define("CONF_ADDR_NUMBER", "918");
+define("CONF_ADDR_CITY", "Londrina");
+define("CONF_ADDR_STATE", "PR");
+define("CONF_ADDR_ZIPCODE", "86010-188");
+
+/**
  * DATES
  */
 define("CONF_DATE_BR", "d/m/Y H:i:s");
