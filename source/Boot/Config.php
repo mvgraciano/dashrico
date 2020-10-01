@@ -19,7 +19,7 @@ define("CONF_URL_TEST", "https://www.localhost/dash-rico");
  */
 define("CONF_VIEW_PATH", __DIR__ . "/../../shared/views");
 define("CONF_VIEW_EXT", "php");
-define("CONF_VIEW_THEME", "dash-rico");
+define("CONF_VIEW_THEME", "midone-rico");
 
 /**
  * SITE

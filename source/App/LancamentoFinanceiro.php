@@ -35,6 +35,7 @@ class LancamentoFinanceiro extends Controller
 
         echo $this->view->render("Lancamentos/index", [
             "head" => $head,
+            "title" => "Ricoshops - Financeiro",
             "message" => ($message ?? null),
             "assinatura" => $assinatura,
             "lancamentos" => $lancamentos
@@ -146,6 +147,7 @@ class LancamentoFinanceiro extends Controller
 
         echo $this->view->render("Lancamentos/new", [
             "head" => $head,
+            "title" => "Novo Lançamento Financeiro",
             "assinatura" => $assinatura,
             "message" => ($message ?? null),
             "idAssinatura" => $data['id']

@@ -63,11 +63,14 @@ class LancamentoFinanceiro extends Model
         $expire = $now->diff($vencimento);
 
         if (!$expire->days && $expire->invert) {
-            return 'text-secondary';
+            // return 'text-secondary';
+            return 'text-gray-700';
         } elseif (!$expire->invert) {
-            return 'text-success';
+            // return 'text-success';
+            return 'text-theme-9';
         } else {
-            return 'text-danger';
+            // return 'text-danger';
+            return 'text-theme-6';
         }
     }
 }

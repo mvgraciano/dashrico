@@ -33,6 +33,7 @@ class AssinaturaRicoshop extends Controller
 
         echo $this->view->render("Assinaturas/index", [
             "head" => $head,
+            "title" => "Ricoshops - Assinaturas",
             "assinaturas" => $assinaturas->fetch(true),
             "message" => ($message ?? null),
             "paginator" => ($paginator ?? null)
@@ -57,7 +58,9 @@ class AssinaturaRicoshop extends Controller
 
         echo $this->view->render("Assinaturas/show", [
             "head" => $head,
-            "assinatura" => $assinatura
+            "title" => "Detalhes Assinatura",
+            "assinatura" => $assinatura,
+            "message" => null
         ]);
     }
 
@@ -117,6 +120,7 @@ class AssinaturaRicoshop extends Controller
 
         echo $this->view->render("Assinaturas/edit", [
             "head" => $head,
+            "title" => "Editar Assinatura",
             "assinatura" => $assinatura,
             "shops" => $shops,
             "planos" => $planos,
@@ -175,6 +179,7 @@ class AssinaturaRicoshop extends Controller
 
         echo $this->view->render("Assinaturas/new", [
             "head" => $head,
+            "title" => "Nova Assinatura",
             "shops" => $shops,
             "planos" => $planos,
             "message" => ($message ?? null)

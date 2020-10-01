@@ -35,7 +35,7 @@ class Ricoshop extends Controller
                 );
                 if ($shop->save()) {
                     $success = true;
-                    $message = $this->message->success("Registro atualizado com sucesso")->render();
+                    $message = $this->message->success("Cadastro realizado com sucesso")->render();
                 } else {
                     $success = false;
                     $message = $shop->message()->render();
@@ -56,6 +56,7 @@ class Ricoshop extends Controller
 
         echo $this->view->render("Ricoshops/index", [
             "head" => $head,
+            "title" => "Ricoshops - Cadastros",
             "shops" => $shops->order("created_at DESC")->limit($pager->limit())->offset($pager->offset())->fetch(true),
             "paginator" => $pager->render(),
             "message" => ($message ?? null)
@@ -81,7 +82,9 @@ class Ricoshop extends Controller
 
         echo $this->view->render("Ricoshops/show", [
             "head" => $head,
-            "shop" => $shop
+            "title" => "Detalhes Loja",
+            "shop" => $shop,
+            "message" => ($message ?? null)
         ]);
     }
 
@@ -110,13 +113,13 @@ class Ricoshop extends Controller
                 $shop->id = $data["idShop"];
                 $shop->nome_empresa = $data["nome"];
                 $shop->cnpj = str_clean_special_chars($data["cnpj"]);
-                $shop->cod_referencia = $data["referencia"];
-                $shop->dominio = $data["dominio"];
-                $shop->telefone = $data["telefone"];
-                $shop->email = $data["email"];
+                $shop->cod_referencia = (!empty($data["referencia"]) ? $data["referencia"] : null);
+                $shop->dominio = (!empty($data["dominio"]) ? $data["dominio"] : null);
+                $shop->telefone = (!empty($data["telefone"]) ? $data["telefone"] : null);
+                $shop->email = (!empty($data["email"]) ? $data["email"] : null);
                 $shop->contrato = $data["contrato"];
                 $shop->status = $data["status"];
-                $shop->obs = $data["osbervacao"];
+                $shop->obs = (!empty($data["osbervacao"]) ? $data["osbervacao"] : null);
                 if ($shop->save()) {
                     $success = true;
                     $message = $this->message->success("Registro atualizado com sucesso")->render();
@@ -136,6 +139,7 @@ class Ricoshop extends Controller
 
         echo $this->view->render("Ricoshops/edit", [
             "head" => $head,
+            "title" => "Editar Loja",
             "shop" => $shop,
             "message" => ($message ?? null)
         ]);

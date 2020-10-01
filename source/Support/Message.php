@@ -70,7 +70,8 @@ class Message
      */
     public function info(string $message): Message
     {
-        $this->type = "alert-info";
+        // $this->type = "alert-info";
+        $this->type = "bg-theme-14 text-theme-1";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -81,7 +82,8 @@ class Message
      */
     public function success(string $message): Message
     {
-        $this->type = "alert-success";
+        // $this->type = "alert-success";
+        $this->type = "bg-theme-18 text-theme-9";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -92,7 +94,8 @@ class Message
      */
     public function warning(string $message): Message
     {
-        $this->type = "alert-warning";
+        // $this->type = "alert-warning";
+        $this->type = "bg-theme-17 text-theme-11";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -103,7 +106,8 @@ class Message
      */
     public function error(string $message): Message
     {
-        $this->type = "alert-danger";
+        // $this->type = "alert-danger";
+        $this->type = "bg-theme-31 text-theme-6";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -113,7 +117,8 @@ class Message
      */
     public function render(): string
     {
-        return "<div class='mt-3 alert {$this->getType()}'>{$this->getText()}</div>";
+        // return "<div class='mt-3 alert {$this->getType()}'>{$this->getText()}</div>";
+        return "<div class='rounded-md flex items-center px-5 py-2 mt-2 border {$this->getType()}'> <i data-feather='alert-octagon' class='w-6 h-6 mr-2'></i>{$this->getText()}</div>";
     }
 
     /**

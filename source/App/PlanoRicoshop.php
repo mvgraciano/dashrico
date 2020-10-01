@@ -60,6 +60,7 @@ class PlanoRicoshop extends Controller
 
         echo $this->view->render("Planos/index", [
             "head" => $head,
+            "title" => "Ricoshops - Planos",
             "planos" => $planos,
             "message" => ($message ?? null)
         ]);
@@ -84,7 +85,9 @@ class PlanoRicoshop extends Controller
 
         echo $this->view->render("Planos/show", [
             "head" => $head,
-            "plano" => $plano
+            "title" => "Detalhes Plano",
+            "plano" => $plano,
+            "message" => null
         ]);
     }
 
@@ -138,6 +141,7 @@ class PlanoRicoshop extends Controller
 
         echo $this->view->render("Planos/edit", [
             "head" => $head,
+            "title" => "Editar Plano",
             "plano" => $plano,
             "message" => ($message ?? null)
         ]);

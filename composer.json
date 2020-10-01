@@ -2,6 +2,7 @@
     "name": "graciano/products",
     "description": "Consulta ao json de produtos da Ricopeças e exibição front",
     "minimum-stability": "stable",
+    "license": "proprietary",
     "authors": [
       {
         "name": "Marcus Graciano",
