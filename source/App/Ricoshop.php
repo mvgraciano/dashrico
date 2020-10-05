@@ -23,7 +23,7 @@ class Ricoshop extends Controller
             }
 
             if (in_array("", $data)) {
-                $message = $this->message->info("Informe o nome da loja e o cnpj para continuar.")->render();
+                $message = $this->message->info("Informe o nome da loja, e-mail e o cnpj para continuar.")->render();
                 $success = false;
             }
 
@@ -31,7 +31,8 @@ class Ricoshop extends Controller
                 $shop = new ModelRicoshop();
                 $shop->bootstrap(
                     $data['nome'],
-                    $data['cnpj']
+                    $data['cnpj'],
+                    $data['email']
                 );
                 if ($shop->save()) {
                     $success = true;
@@ -67,8 +68,8 @@ class Ricoshop extends Controller
     {
         $shopName = filter_var($data["nome"], FILTER_SANITIZE_STRIPPED);
         $name = implode(" ", explode("-", $data["nome"]));
-        $shop = (new ModelRicoshop())->find("nome_empresa LIKE :nome", "nome=%{$name}%")->fetch();
-
+        $shop = (new ModelRicoshop())->find("nome_empresa LIKE :nome", "nome={$name}%")->fetch();
+        
         if (!$shop) {
             redirect("/ricoshops");
         }

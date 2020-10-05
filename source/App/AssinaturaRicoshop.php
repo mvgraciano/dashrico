@@ -85,7 +85,7 @@ class AssinaturaRicoshop extends Controller
                 $success = false;
             }
 
-            if (!preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_aquisicao'])) {
+            if (!filter_var($data['valor_aquisicao'], FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_aquisicao'])) {
                 $message = $this->message->warning("Informe um valor no formato correto")->render();
                 $success = false;
             }
@@ -143,7 +143,7 @@ class AssinaturaRicoshop extends Controller
                 $success = false;
             }
 
-            if (!preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_aquisicao'])) {
+            if (!filter_var($data['valor_aquisicao'], FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_aquisicao'])) {
                 $message = $this->message->warning("Informe um valor no formato correto")->render();
                 $success = false;
             }

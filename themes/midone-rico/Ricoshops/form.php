@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-span-6 mt-1">
                     <label class="ml-1">Telefone</label>
-                    <input type="text" id="telefone" name="telefone" value="<?= ($shop->telefone ?? ""); ?>" data-mask="(00)0000-0000" maxlength="11" placeholder="(__)_____-____" class="input w-full border">
+                    <input type="text" id="telefone" name="telefone" value="<?= ($shop->telefone ?? ""); ?>" data-mask="(00)0000-0000" maxlength="11" placeholder="(__)_____-____" class="input w-full border phone">
                 </div>
             </div>
             <div class="grid grid-cols-12  gap-2 mt-1">

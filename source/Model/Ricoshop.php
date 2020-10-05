@@ -9,7 +9,7 @@ class Ricoshop extends Model
 
     public function __construct()
     {
-        parent::__construct("ricoshops", ["id"], ["nome_empresa", "cnpj"]);
+        parent::__construct("ricoshops", ["id"], ["nome_empresa", "cnpj", "email"]);
     }
 
     /**
@@ -19,9 +19,11 @@ class Ricoshop extends Model
      */
     public function bootstrap(
         string $nome_empresa,
-        string $cnpj
+        string $cnpj,
+        string $email
     ): Ricoshop {
         $this->nome_empresa = $nome_empresa;
+        $this->email = $email;
         $this->cnpj = str_clean_special_chars($cnpj);
         return $this;
     }
@@ -49,6 +51,11 @@ class Ricoshop extends Model
 
         if (!is_cnpj($this->cnpj)) {
             $this->message->warning("O CNPJ informado é inválido");
+            return false;
+        }
+
+        if (!is_email($this->email)) {
+            $this->message->warning("O e-mail informado é inválido");
             return false;
         }
 

@@ -42,6 +42,7 @@ $route->get("/assinaturas/{id}/financeiro", "LancamentoFinanceiro:index");
 $route->get("/assinaturas/{id}/financeiro/lancamento", "LancamentoFinanceiro:new");
 $route->post("/assinaturas/{id}/financeiro/lancamento", "LancamentoFinanceiro:new");
 $route->get("/lancamento/{id}/mail", "LancamentoFinanceiro:sendMail");
+$route->get("/lancamento/{id}/pagar", "LancamentoFinanceiro:paid");
 
 $route->group("/ops");
 $route->get("/{errcode}", "Coffee:notFound");

@@ -56,7 +56,6 @@ define("CONF_MAIL_OPTION_AUTH", true);
 define("CONF_MAIL_OPTION_SECURE", "tls");
 define("CONF_MAIL_OPTION_CHARSET", "utf-8");
 
-
 /**
  * REGEX
  */

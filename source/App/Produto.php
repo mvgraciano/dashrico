@@ -11,7 +11,7 @@ class Produto extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
-        // $model =(new ModelProduto())->reloadProducts();
+        (new ModelProduto())->reloadProducts();
     }
 
     public function productsIndex(?array $data)

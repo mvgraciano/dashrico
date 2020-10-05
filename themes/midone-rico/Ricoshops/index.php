@@ -15,8 +15,9 @@
                     <form method="post" action="">
                         <div class="grid grid-cols-12 gap-2">
                             <?= csrf_input(); ?>
-                            <input type="text" id="nome" name="nome" class="input w-full border col-span-5" placeholder="Nome" maxlength="45">
-                            <input type="text" id="cnpj" name="cnpj" data-mask="00.000.000/0000-00" class="input w-full border col-span-5" placeholder="CNPJ">
+                            <input type="text" id="nome" name="nome" class="input w-full border col-span-4" placeholder="Nome" maxlength="45">
+                            <input type="text" id="email" name="email" class="input w-full border col-span-3" placeholder="E-mail" maxlength="45">
+                            <input type="text" id="cnpj" name="cnpj" data-mask="00.000.000/0000-00" class="input w-full border col-span-3" placeholder="CNPJ">
                             <button type="submit" class="button bg-theme-18 text-theme-9 col-span-2">Cadastrar</button>
                         </div>
                     </form>
@@ -30,7 +31,7 @@
                                 <tr class="bg-gray-200 text-gray-700">
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">#</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Nome</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ref</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Domínio</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">CNPJ</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ações</th>
                                 </tr>
@@ -41,7 +42,7 @@
                                         <tr>
                                             <td class="border-b whitespace-no-wrap"><?= $shop->id ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $shop->nome_empresa ?></td>
-                                            <td class="border-b whitespace-no-wrap"><?= $shop->cod_referencia ?? "-" ?></td>
+                                            <td class="border-b whitespace-no-wrap"><?= $shop->dominio ?? "-" ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $shop->cnpj ?></td>
                                             <td class="border-b whitespace-no-wrap">
                                                 <a href="<?= url("/ricoshops/loja/") . str_slug($shop->nome_empresa) ?>" class="button button--sm bg-theme-18 text-theme-9 col-span-2">Ver informações</a>

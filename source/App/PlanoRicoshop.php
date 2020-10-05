@@ -28,7 +28,7 @@ class PlanoRicoshop extends Controller
                 $success = false;
             }
 
-            if(!preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_mensal'])){
+            if(!filter_var($data['valor_mensal'], FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_mensal'])){
                 $message = $this->message->warning("Informe um valor no formato correto")->render();
                 $success = false;
             }
@@ -111,8 +111,8 @@ class PlanoRicoshop extends Controller
                 $message = $this->message->warning("Informe o nome do plano e o valor mensal para continuar")->render();
                 $success = false;
             }
-
-            if(!preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_mensal'])){
+            
+            if(!filter_var($data['valor_mensal'], FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $data['valor_mensal'])){
                 $message = $this->message->warning("Informe um valor no formato correto")->render();
                 $success = false;
             }

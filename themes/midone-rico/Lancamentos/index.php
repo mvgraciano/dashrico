@@ -38,6 +38,7 @@
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Descrição</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Valor</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Vencimento</th>
+                                        <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Pago?</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ações</th>
                                     </tr>
                                 </thead>
@@ -47,9 +48,11 @@
                                             <tr>
                                                 <td class="border-b whitespace-no-wrap"><?= $lancamento->descricao ?></td>
                                                 <td class="border-b whitespace-no-wrap"><?= brl_format($lancamento->valor) ?></td>
-                                                <td class="border-b whitespace-no-wrap <?= $lancamento->vencimentoClass() ?>"><?= date_fmt($lancamento->vencimento, "d/m/Y") ?></td>
+                                                <td class="border-b whitespace-no-wrap <?= $lancamento->dueClass() ?>"><?= date_fmt($lancamento->vencimento, "d/m/Y") ?></td>
+                                                <td class="border-b whitespace-no-wrap <?= $lancamento->pago == 1 ? 'text-theme-9' : 'text-theme-6' ?>"><?= $lancamento->pago == 1 ? 'Sim' : 'Não' ?></td>
                                                 <td class="border-b whitespace-no-wrap">
                                                     <a class="button button--sm mr-1 mb-2 bg-theme-14 text-theme-10" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/mail") ?>">Enviar e-mail</a>
+                                                    <a class="button button--sm mr-1 mb-2 bg-theme-18 text-theme-9" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/pagar") ?>">Dar baixa</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

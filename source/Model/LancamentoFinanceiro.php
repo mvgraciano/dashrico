@@ -28,7 +28,7 @@ class LancamentoFinanceiro extends Model
             return false;
         }
 
-        if (!preg_match(CONF_REGEX_MONEY_VALUE, $this->valor)) {
+        if (!filter_var($this->valor, FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $this->valor)) {
             $this->message->warning("Informe um valor no formato correto")->render();
             return false;
         }
@@ -61,7 +61,7 @@ class LancamentoFinanceiro extends Model
         return (new AssinaturaRicoshop())->findById($this->assinatura_id);
     }
 
-    public function vencimentoClass(): string
+    public function dueClass(): string
     {
         $now = new \DateTime();
         $vencimento = new \DateTime($this->vencimento);

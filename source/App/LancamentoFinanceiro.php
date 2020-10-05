@@ -70,7 +70,7 @@ class LancamentoFinanceiro extends Controller
                 $success = false;
             }
 
-            if (!preg_match(CONF_REGEX_MONEY_VALUE, $data['valor'])) {
+            if (!filter_var($data['valor'], FILTER_VALIDATE_INT) && !preg_match(CONF_REGEX_MONEY_VALUE, $data['valor'])) {
                 $message = $this->message->info("Informe um valor no formato correto")->render();
                 $success = false;
             }
@@ -181,6 +181,19 @@ class LancamentoFinanceiro extends Controller
             $this->message->warning("Não foi possível enviar o e-mail, tente novamente em alguns minutos.")->flash();
         }
         
+        redirect("/ricoshops/assinaturas/{$assinatura->id}/financeiro");
+    }
+
+    public function paid(array $data)
+    {
+        $lancamento = (new \Source\Model\LancamentoFinanceiro())->findById($data["id"]);
+        $lancamento->pago = 1;
+        if($lancamento->save()){
+            $this->message->success("Pagamento confirmado com sucesso.")->flash();
+        } else {
+            $this->message->success("Não foi possóvel dar baixa no lançamento, por favor tente novamente.")->flash();
+        }
+        $assinatura = $lancamento->assinatura();
         redirect("/ricoshops/assinaturas/{$assinatura->id}/financeiro");
     }
 }
