@@ -80,25 +80,25 @@
             </li>
             <li>
                 <a href="<?= url("/produtos") ?>" class="top-menu">
-                    <div class="top-menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="top-menu__icon"> <i data-feather="box"></i> </div>
                     <div class="top-menu__title"> Produtos </div>
                 </a>
             </li>
             <li>
                 <a href="<?= url("/ricoshops") ?>" class="top-menu">
-                    <div class="top-menu__icon"> <i data-feather="pen-tool"></i> </div>
+                    <div class="top-menu__icon"> <i data-feather="clipboard"></i> </div>
                     <div class="top-menu__title"> Cadastros </div>
                 </a>
             </li>
             <li>
                 <a href="<?= url("/ricoshops/planos") ?>" class="top-menu">
-                    <div class="top-menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="top-menu__icon"> <i data-feather="tag"></i> </div>
                     <div class="top-menu__title"> Planos </div>
                 </a>
             </li>
             <li>
                 <a href="<?= url("/ricoshops/assinaturas") ?>" class="top-menu">
-                    <div class="top-menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="top-menu__icon"> <i data-feather="file-text"></i> </div>
                     <div class="top-menu__title"> Assinaturas </div>
                 </a>
             </li>
