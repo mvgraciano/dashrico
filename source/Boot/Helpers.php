@@ -50,6 +50,15 @@ function date_fmt_app(string $date = "now"): string
     return (new DateTime($date))->format(CONF_DATE_APP);
 }
 
+
+function get_percentage($number, $total){
+    if ($total > 0) {
+        return round($number/($total/100), 2);
+    } else {
+        return 0;
+    }
+}
+
 /**
  * ####################
  * ###   VALIDATE   ###
@@ -209,6 +218,18 @@ function flash(): ?string
     $session = new \Source\Core\Session();
     if ($flash = $session->flash()) {
         return $flash;
+    }
+    return null;
+}
+
+/**
+ * @return string|null
+ */
+function tab_active(): ?string
+{
+    $session = new \Source\Core\Session();
+    if ($tab_active = $session->tab_active()) {
+        return $tab_active;
     }
     return null;
 }

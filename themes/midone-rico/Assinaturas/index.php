@@ -35,7 +35,8 @@
                                             <td class="border-b whitespace-no-wrap"><?= $assinatura->plano()->nome ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $assinatura->verificarStatus() ?></td>
                                             <td class="border-b whitespace-no-wrap">
-                                                <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}") ?>" class="button bg-theme-18 text-theme-9 col-span-2">Ver informações</a>
+                                                <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}/edit") ?>" class="button button--sm w-24 bg-theme-14 text-theme-10 col-span-2">Editar</a>
+                                                <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}/financeiro") ?>" class="button button--sm w-24 bg-theme-18 text-theme-9 col-span-2">Financeiro</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

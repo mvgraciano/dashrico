@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-span-6 mt-1">
                     <label class="ml-1">Telefone</label>
-                    <input type="text" id="telefone" name="telefone" value="<?= ($shop->telefone ?? ""); ?>" data-mask="(00)0000-0000" maxlength="11" placeholder="(__)_____-____" class="input w-full border phone">
+                    <input type="text" id="telefone" name="telefone" value="<?= ($shop->telefone ?? ""); ?>" maxlength="11" placeholder="(__)_____-____" class="input w-full border phone-mask">
                 </div>
             </div>
             <div class="grid grid-cols-12  gap-2 mt-1">
@@ -65,7 +65,7 @@
     </div>
     <div class="flex items-center p-5">
         <div class="mr-auto">
-            <a href="<?= url_back() ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11">
+            <a href="<?= url("/ricoshops") ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11">
                 <i data-feather="corner-down-left" class="w-4 h-4 mr-2"></i>Voltar
             </a>
         </div>

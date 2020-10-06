@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Core\Session;
 use Source\Model\PlanoRicoshop;
 use Source\Model\Ricoshop;
 use Source\Support\Pager;
@@ -13,6 +14,7 @@ class AssinaturaRicoshop extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        (new Session())->set("tab_active", "assinaturas");
     }
 
     public function index(?array $data)
@@ -37,30 +39,6 @@ class AssinaturaRicoshop extends Controller
             "assinaturas" => $assinaturas->fetch(true),
             "message" => ($message ?? null),
             "paginator" => ($paginator ?? null)
-        ]);
-    }
-
-    public function show(array $data)
-    {
-        $assinaturaId = filter_var($data["id"], FILTER_VALIDATE_INT);
-        $assinatura = (new \Source\Model\AssinaturaRicoshop())->findById($assinaturaId);
-
-        if (!$assinatura) {
-            redirect("/ricoshops/assinaturas");
-        }
-
-        $head = $this->seo->render(
-            CONF_SITE_NAME . " - Ricoshop Assinatura - {$assinatura->ricoshop()->nome_empresa}",
-            CONF_SITE_NAME . " - Ricoshop Assinatura - {$assinatura->ricoshop()->nome_empresa}",
-            url("/ricoshops/assinaturas/{$assinatura->id}"),
-            ""
-        );
-
-        echo $this->view->render("Assinaturas/show", [
-            "head" => $head,
-            "title" => "Detalhes Assinatura",
-            "assinatura" => $assinatura,
-            "message" => null
         ]);
     }
 

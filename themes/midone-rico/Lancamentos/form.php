@@ -55,7 +55,7 @@
     </div>
     <div class="flex items-center p-5">
         <div class="mr-auto">
-            <a href="<?= url_back() ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11">
+            <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}/financeiro") ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11">
                 <i data-feather="corner-down-left" class="w-4 h-4 mr-2"></i>Voltar
             </a>
         </div>

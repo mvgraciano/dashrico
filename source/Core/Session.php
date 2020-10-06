@@ -119,4 +119,17 @@ class Session
     {
         $_SESSION['csrf_token'] = md5(uniqid(rand(), true));
     }
+
+    /**
+     * @return null|string
+     */
+    public function tab_active(): ?string
+    {
+        if ($this->has("tab_active")) {
+            $tab_active = $this->tab_active;
+            $this->unset("tab_active");
+            return $tab_active;
+        }
+        return null;
+    }
 }

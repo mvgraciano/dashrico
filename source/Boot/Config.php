@@ -32,7 +32,7 @@ define("CONF_SITE_LANG", "pt_BR");
  */
 define("CONF_ADDR_STREET", "Rua Florianópolis");
 define("CONF_ADDR_NUMBER", "918");
-define("CONF_ADDR_CITY", "Londrina");
+define("CONF_ADDR_CITY", "Cambé");
 define("CONF_ADDR_STATE", "PR");
 define("CONF_ADDR_ZIPCODE", "86010-188");
 
@@ -45,11 +45,11 @@ define("CONF_DATE_APP", "Y-m-d H:i:s");
 /**
  * MAIL
  */
-define("CONF_MAIL_HOST", "smtp.gmail.com");
+define("CONF_MAIL_HOST", "smtp.umbler.com");
 define("CONF_MAIL_PORT", "587");
-define("CONF_MAIL_USER", "marcusgraciano.ads@gmail.com");
-define("CONF_MAIL_PASS", "MV<Graciano0IO8");
-define("CONF_MAIL_SENDER", ["name" => "Marcus V. Graciano", "address" => "marcusgraciano.ads@gmail.com"]);
+define("CONF_MAIL_USER", "hello@ricoshops.com.br");
+define("CONF_MAIL_PASS", "Rafa@348408");
+define("CONF_MAIL_SENDER", ["name" => "Ricoshops", "address" => "hello@ricoshops.com.br"]);
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);

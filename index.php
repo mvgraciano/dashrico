@@ -20,19 +20,16 @@ $route->group("/ricoshops");
 $route->get("/", "Ricoshop:ricoshopsIndex");
 $route->post("/", "Ricoshop:ricoshopsIndex");
 $route->get("/{page}", "Ricoshop:ricoshopsIndex");
-$route->get("/loja/{nome}", "Ricoshop:show");
 $route->get("/{id}/edit", "Ricoshop:edit");
 $route->post("/{id}/edit", "Ricoshop:edit");
 
 $route->get("/planos", "PlanoRicoshop:index");
 $route->post("/planos", "PlanoRicoshop:index");
-$route->get("/planos/{nome}", "PlanoRicoshop:show");
 $route->get("/planos/{id}/edit", "PlanoRicoshop:edit");
 $route->post("/planos/{id}/edit", "PlanoRicoshop:edit");
 
 $route->get("/assinaturas", "AssinaturaRicoshop:index");
 $route->get("/assinaturas/{page}", "AssinaturaRicoshop:index");
-$route->get("/assinaturas/{id}", "AssinaturaRicoshop:show");
 $route->get("/assinaturas/{id}/edit", "AssinaturaRicoshop:edit");
 $route->post("/assinaturas/{id}/edit", "AssinaturaRicoshop:edit");
 $route->get("/assinaturas/nova", "AssinaturaRicoshop:new");
@@ -43,6 +40,7 @@ $route->get("/assinaturas/{id}/financeiro/lancamento", "LancamentoFinanceiro:new
 $route->post("/assinaturas/{id}/financeiro/lancamento", "LancamentoFinanceiro:new");
 $route->get("/lancamento/{id}/mail", "LancamentoFinanceiro:sendMail");
 $route->get("/lancamento/{id}/pagar", "LancamentoFinanceiro:paid");
+$route->get("/lancamento/{id}/cancelar", "LancamentoFinanceiro:cancel");
 
 $route->group("/ops");
 $route->get("/{errcode}", "Coffee:notFound");

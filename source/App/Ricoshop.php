@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Core\Session;
 use Source\Model\Ricoshop as ModelRicoshop;
 use Source\Support\Pager;
 
@@ -11,6 +12,7 @@ class Ricoshop extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        (new Session())->set("tab_active", "cadastros");
     }
 
     public function ricoshopsIndex(array $data)
@@ -60,31 +62,6 @@ class Ricoshop extends Controller
             "title" => "Ricoshops - Cadastros",
             "shops" => $shops->order("created_at DESC")->limit($pager->limit())->offset($pager->offset())->fetch(true),
             "paginator" => $pager->render(),
-            "message" => ($message ?? null)
-        ]);
-    }
-
-    public function show(array $data)
-    {
-        $shopName = filter_var($data["nome"], FILTER_SANITIZE_STRIPPED);
-        $name = implode(" ", explode("-", $data["nome"]));
-        $shop = (new ModelRicoshop())->find("nome_empresa LIKE :nome", "nome={$name}%")->fetch();
-        
-        if (!$shop) {
-            redirect("/ricoshops");
-        }
-
-        $head = $this->seo->render(
-            CONF_SITE_NAME . " - {$shop->nome_empresa}",
-            CONF_SITE_NAME . " - {$shop->nome_empresa}",
-            url("/ricoshops/loja/") . str_slug($shop->nome_empresa),
-            ""
-        );
-
-        echo $this->view->render("Ricoshops/show", [
-            "head" => $head,
-            "title" => "Detalhes Loja",
-            "shop" => $shop,
             "message" => ($message ?? null)
         ]);
     }

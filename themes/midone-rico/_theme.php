@@ -6,6 +6,7 @@
     <link href="<?= theme("/assets/images/logo.svg") ?>" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= $head; ?>
+    <?php $tab_active = tab_active(); ?>
     <link rel="stylesheet" href="<?= theme("/assets/css/app.css") ?>" />
     <link rel="stylesheet" href="<?= theme("/assets/css/custom.css") ?>" />
 </head>
@@ -15,31 +16,38 @@
         <div class="mobile-menu-bar">
             <a href="" class="flex mr-auto">
                 <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="<?= theme("/assets/images/logo.svg") ?>">
+                <span class="text-white text-lg ml-3"><span class="font-medium">Rico</span>shops</span>
             </a>
             <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
         <ul class="border-t border-theme-24 py-5 hidden">
             <li>
-                <a href="index.html" class="menu menu--active">
+                <a href="<?= url("/") ?>" class="menu">
                     <div class="menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="menu__title"> Dashboard </div>
+                </a>
+            </li>
+            <li>
+                <a href="<?= url("/produtos") ?>" class="menu">
+                    <div class="menu__icon"> <i data-feather="box"></i> </div>
                     <div class="menu__title"> Produtos </div>
                 </a>
             </li>
             <li>
-                <a href="index.html" class="menu">
-                    <div class="menu__icon"> <i data-feather="home"></i> </div>
+                <a href="<?= url("/ricoshops") ?>" class="menu">
+                    <div class="menu__icon"> <i data-feather="clipboard"></i> </div>
                     <div class="menu__title"> Cadastros </div>
                 </a>
             </li>
             <li>
-                <a href="index.html" class="menu">
+                <a href="<?= url("/ricoshops/planos") ?>" class="menu">
                     <div class="menu__icon"> <i data-feather="home"></i> </div>
-                    <div class="menu__title"> Planos </div>
+                    <div class="menu__title"> tag </div>
                 </a>
             </li>
             <li>
-                <a href="index.html" class="menu">
-                    <div class="menu__icon"> <i data-feather="home"></i> </div>
+                <a href="<?= url("/ricoshops/assinaturas") ?>" class="menu">
+                    <div class="menu__icon"> <i data-feather="file-text"></i> </div>
                     <div class="menu__title"> Assinaturas </div>
                 </a>
             </li>
@@ -49,7 +57,7 @@
         <div class="top-bar-boxed flex items-center">
             <a href="" class="-intro-x hidden md:flex mr-auto">
                 <img alt="Portal Ricopeças" class="w-6" src="<?= theme("/assets/images/logo.svg") ?>">
-                <span class="text-white text-lg ml-3"><span class="font-medium">Rico</span>peças</span>
+                <span class="text-white text-lg ml-3"><span class="font-medium">Rico</span>shops</span>
             </a>
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
@@ -73,31 +81,31 @@
     <nav class="top-nav">
         <ul>
             <li>
-                <a href="" class="top-menu top-menu--active">
+                <a href="<?= url("/") ?>"  class="top-menu <?= $tab_active == 'dashboard' ? 'top-menu--active' : '' ?>">
                     <div class="top-menu__icon"> <i data-feather="home"></i> </div>
                     <div class="top-menu__title"> Dashboard </div>
                 </a>
             </li>
             <li>
-                <a href="<?= url("/produtos") ?>" class="top-menu">
+                <a href="<?= url("/produtos") ?>" class="top-menu <?= $tab_active == 'produtos' ? 'top-menu--active' : '' ?>">
                     <div class="top-menu__icon"> <i data-feather="box"></i> </div>
                     <div class="top-menu__title"> Produtos </div>
                 </a>
             </li>
             <li>
-                <a href="<?= url("/ricoshops") ?>" class="top-menu">
+                <a href="<?= url("/ricoshops") ?>" class="top-menu <?= $tab_active == 'cadastros' ? 'top-menu--active' : '' ?>">
                     <div class="top-menu__icon"> <i data-feather="clipboard"></i> </div>
                     <div class="top-menu__title"> Cadastros </div>
                 </a>
             </li>
             <li>
-                <a href="<?= url("/ricoshops/planos") ?>" class="top-menu">
+                <a href="<?= url("/ricoshops/planos") ?>" class="top-menu <?= $tab_active == 'planos' ? 'top-menu--active' : '' ?>">
                     <div class="top-menu__icon"> <i data-feather="tag"></i> </div>
                     <div class="top-menu__title"> Planos </div>
                 </a>
             </li>
             <li>
-                <a href="<?= url("/ricoshops/assinaturas") ?>" class="top-menu">
+                <a href="<?= url("/ricoshops/assinaturas") ?>" class="top-menu <?= $tab_active == 'assinaturas' ? 'top-menu--active' : '' ?>">
                     <div class="top-menu__icon"> <i data-feather="file-text"></i> </div>
                     <div class="top-menu__title"> Assinaturas </div>
                 </a>
@@ -123,6 +131,7 @@
     <script src="<?= theme("/assets/js/jquery.min.js"); ?>"></script>
     <script src="<?= theme("/assets/js/mask.js"); ?>"></script>
     <script src="<?= theme("/assets/js/custom.js"); ?>"></script>
+    <?= $v->section("scripts"); ?>
 </body>
 
 </html>

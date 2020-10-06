@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Core\Session;
 use Source\Model\PlanoRicoshop as ModelPlanoRicoshop;
 
 class PlanoRicoshop extends Controller
@@ -11,6 +12,7 @@ class PlanoRicoshop extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        (new Session())->set("tab_active", "planos");
     }
 
     public function index(array $data)

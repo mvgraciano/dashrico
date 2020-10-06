@@ -6,7 +6,7 @@
             <div class="intro-y box mt-5">
                 <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
                     <div>
-                        <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}") ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11"><i data-feather="corner-down-left" class="w-4 h-4 mr-2"></i>Voltar</a>
+                        <a href="<?= url("/ricoshops/assinaturas") ?>" class="button w-24 mr-1 mb-2 shadow-md flex items-center justify-center bg-theme-17 text-theme-11"><i data-feather="corner-down-left" class="w-4 h-4 mr-2"></i>Voltar</a>
                     </div>
                     <div class="mr-auto ml-auto">
                         <h2 class="font-medium text-base">
@@ -39,6 +39,7 @@
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Valor</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Vencimento</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Pago?</th>
+                                        <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ativo?</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ações</th>
                                     </tr>
                                 </thead>
@@ -50,9 +51,11 @@
                                                 <td class="border-b whitespace-no-wrap"><?= brl_format($lancamento->valor) ?></td>
                                                 <td class="border-b whitespace-no-wrap <?= $lancamento->dueClass() ?>"><?= date_fmt($lancamento->vencimento, "d/m/Y") ?></td>
                                                 <td class="border-b whitespace-no-wrap <?= $lancamento->pago == 1 ? 'text-theme-9' : 'text-theme-6' ?>"><?= $lancamento->pago == 1 ? 'Sim' : 'Não' ?></td>
+                                                <td class="border-b whitespace-no-wrap <?= $lancamento->status == 0 ? 'text-theme-6' : '' ?>"><?= $lancamento->status == 1 ? 'Sim' : 'Não' ?></td>
                                                 <td class="border-b whitespace-no-wrap">
                                                     <a class="button button--sm mr-1 mb-2 bg-theme-14 text-theme-10" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/mail") ?>">Enviar e-mail</a>
                                                     <a class="button button--sm mr-1 mb-2 bg-theme-18 text-theme-9" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/pagar") ?>">Dar baixa</a>
+                                                    <a class="button button--sm mr-1 mb-2 bg-theme-17 text-theme-11" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/cancelar") ?>">Cancelar / Devolução</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

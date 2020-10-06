@@ -43,9 +43,9 @@
                                             <td class="border-b whitespace-no-wrap"><?= $shop->id ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $shop->nome_empresa ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $shop->dominio ?? "-" ?></td>
-                                            <td class="border-b whitespace-no-wrap"><?= $shop->cnpj ?></td>
+                                            <td class="border-b whitespace-no-wrap"><?= formata_cpf_cnpj($shop->cnpj) ?></td>
                                             <td class="border-b whitespace-no-wrap">
-                                                <a href="<?= url("/ricoshops/loja/") . str_slug($shop->nome_empresa) ?>" class="button button--sm bg-theme-18 text-theme-9 col-span-2">Ver informações</a>
+                                                <a href="<?= url("/ricoshops/{$shop->id}/edit") ?>" class="button button--sm w-24 bg-theme-14 text-theme-10 col-span-2">Editar</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

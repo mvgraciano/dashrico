@@ -4,6 +4,7 @@ namespace Source\App;
 
 use DateTime;
 use Source\Core\Controller;
+use Source\Core\Session;
 use Source\Core\View;
 use Source\Support\Email;
 
@@ -13,6 +14,7 @@ class LancamentoFinanceiro extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        (new Session())->set("tab_active", "assinaturas");
     }
 
     public function index(array $data)
@@ -191,7 +193,20 @@ class LancamentoFinanceiro extends Controller
         if($lancamento->save()){
             $this->message->success("Pagamento confirmado com sucesso.")->flash();
         } else {
-            $this->message->success("Não foi possóvel dar baixa no lançamento, por favor tente novamente.")->flash();
+            $this->message->success("Não foi possível dar baixa no lançamento, por favor tente novamente.")->flash();
+        }
+        $assinatura = $lancamento->assinatura();
+        redirect("/ricoshops/assinaturas/{$assinatura->id}/financeiro");
+    }
+    
+    public function cancel(array $data)
+    {
+        $lancamento = (new \Source\Model\LancamentoFinanceiro())->findById($data["id"]);
+        $lancamento->status = 0;
+        if($lancamento->save()){
+            $this->message->success("Fatura cancelada com sucesso.")->flash();
+        } else {
+            $this->message->success("Não foi possível cancelar a fatura, por favor tente novamente.")->flash();
         }
         $assinatura = $lancamento->assinatura();
         redirect("/ricoshops/assinaturas/{$assinatura->id}/financeiro");
