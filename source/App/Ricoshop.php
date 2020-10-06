@@ -116,7 +116,7 @@ class Ricoshop extends Controller
                 $shop->cnpj = str_clean_special_chars($data["cnpj"]);
                 $shop->cod_referencia = (!empty($data["referencia"]) ? $data["referencia"] : null);
                 $shop->dominio = (!empty($data["dominio"]) ? $data["dominio"] : null);
-                $shop->telefone = (!empty($data["telefone"]) ? $data["telefone"] : null);
+                $shop->telefone = (!empty($data["telefone"]) ? str_clean_special_chars($data["telefone"]) : null);
                 $shop->email = (!empty($data["email"]) ? $data["email"] : null);
                 $shop->contrato = $data["contrato"];
                 $shop->status = $data["status"];

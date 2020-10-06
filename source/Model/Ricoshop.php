@@ -45,7 +45,7 @@ class Ricoshop extends Model
     public function save(): bool
     {
         if (!$this->required()) {
-            $this->message->warning("Nome e CNPJ são obrigatórios");
+            $this->message->warning("Nome, CNPJ e e-mail são obrigatórios");
             return false;
         }
 
