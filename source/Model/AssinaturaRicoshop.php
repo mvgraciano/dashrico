@@ -74,6 +74,10 @@ class AssinaturaRicoshop extends Model{
         return null;
     }
 
+    public function lancamentos(){
+        return (new LancamentoFinanceiro())->find("assinatura_id = :assinatura_id", "assinatura_id={$this->id}")->fetch(true);
+    }
+
     public function verificarStatus(): string
     {
         $status = $this->status;

@@ -26,7 +26,7 @@ class LancamentoFinanceiro extends Controller
         }
 
         $lancamentos = (new \Source\Model\LancamentoFinanceiro())
-                        ->find("assinatura_id = :assinatura_id", "assinatura_id={$assinatura->id}")
+                        ->find("assinatura_id = :assinatura_id AND status = 1", "assinatura_id={$assinatura->id}")
                         ->order("vencimento ASC")
                         ->fetch(true);
 

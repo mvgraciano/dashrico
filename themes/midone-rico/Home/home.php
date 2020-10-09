@@ -19,7 +19,7 @@
                 </div>
                 <div class="text-3xl font-bold leading-8 mt-6"><?= $qtd_lojas_mes ?></div>
                 <div class="text-base text-gray-600 mt-1">Novas Lojas Vendidas</div>
-                <div>Meta: 10</div>
+                <div>Meta: 12</div>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                 </h2>
             </div>
             <div class="intro-y box p-5 mt-5">
-                <canvas class="mt-3" id="2report-pie-chart" height="280"></canvas>
+                <canvas class="mt-3" id="report-pie-chart" height="280"></canvas>
                 <div class="mt-8">
                     <div class="flex items-center mt-4">
                         <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
