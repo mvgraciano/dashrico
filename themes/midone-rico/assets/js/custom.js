@@ -1,17 +1,14 @@
-$('.phone-mask').each(function(i, el){
-    $('#'+el.id).mask("(00) 00000-0000");
- })
+$(document).ready(function(){
 
- function updateMask(event) {
-     var $element = $('#'+this.id);
-     $(this).off('blur');
-     $element.unmask();
-     if(this.value.replace(/\D/g, '').length > 10) {
-         $element.mask("(00) 00000-0000");
-     } else {
-         $element.mask("(00) 0000-00009");
-     }
-     $(this).on('change', updateMask);
- }
-
- $('.phone-mask').on('change', updateMask);
+  //////// PHONE-MASK ////////
+  var SPMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+  },
+  spOptions = {
+    onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+  };
+  $('.phone-mask').mask(SPMaskBehavior, spOptions);
+  //////// END PHONE-MASK ////////
+});

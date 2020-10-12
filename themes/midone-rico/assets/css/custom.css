@@ -39,3 +39,9 @@
 .paginator span {
     background: #cccccc;
 }
+
+a.isDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+  }
