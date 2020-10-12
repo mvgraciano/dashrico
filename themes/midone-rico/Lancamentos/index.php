@@ -51,10 +51,15 @@
                                                 <td class="border-b whitespace-no-wrap"><?= brl_format($lancamento->valor) ?></td>
                                                 <td class="border-b whitespace-no-wrap <?= $lancamento->dueClass() ?>"><?= date_fmt($lancamento->vencimento, "d/m/Y") ?></td>
                                                 <td class="border-b whitespace-no-wrap <?= $lancamento->pago == 1 ? 'text-theme-9' : 'text-theme-6' ?>"><?= $lancamento->pago == 1 ? 'Sim' : 'Não' ?></td>
-                                                <td class="border-b whitespace-no-wrap <?= $lancamento->status == 0 ? 'text-theme-6' : '' ?>"><?= $lancamento->status == 1 ? 'Sim' : 'Não' ?></td>
+                                                <td class="border-b whitespace-no-wrap <?= $lancamento->status != 1 ? 'text-theme-6' : '' ?>"><?= $lancamento->status != 1 ? 'Não' : 'Sim' ?></td>
                                                 <td class="border-b whitespace-no-wrap">
-                                                    <a class="button button--sm mr-1 mb-2 bg-theme-14 text-theme-10" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/mail") ?>">Enviar e-mail</a>
-                                                    <a class="button button--sm mr-1 mb-2 bg-theme-18 text-theme-9" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/pagar") ?>">Dar baixa</a>
+                                                    <?php if ($lancamento->pago != 1): ?>
+                                                        <a class="button button--sm mr-1 mb-2 bg-theme-14 text-theme-10" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/mail") ?>">Enviar e-mail</a>
+                                                        <a class="button button--sm mr-1 mb-2 bg-theme-18 text-theme-9" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/pagar") ?>">Dar baixa</a>
+                                                    <?php else: ?>
+                                                        <a class="button button--sm mr-1 mb-2 bg-theme-14 text-theme-10 isDisabled">Enviar e-mail</a>
+                                                        <a class="button button--sm mr-1 mb-2 bg-theme-18 text-theme-9 isDisabled">Dar baixa</a>
+                                                    <?php endif; ?>
                                                     <a class="button button--sm mr-1 mb-2 bg-theme-17 text-theme-11" href="<?= url("/ricoshops/lancamento/{$lancamento->id}/cancelar") ?>">Cancelar / Devolução</a>
                                                 </td>
                                             </tr>

@@ -78,6 +78,24 @@ class AssinaturaRicoshop extends Model{
         return (new LancamentoFinanceiro())->find("assinatura_id = :assinatura_id", "assinatura_id={$this->id}")->fetch(true);
     }
 
+    /**
+     * @return bool
+     */
+    public function pendencias(): bool
+    {
+        $date_now = date('Y-m-d');
+        $lancamentos = $this->lancamentos();
+        if($lancamentos){
+            foreach ($lancamentos as $lancamento) {
+                if (($lancamento->data->vencimento < $date_now) && $lancamento->data->pago == 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public function verificarStatus(): string
     {
         $status = $this->status;

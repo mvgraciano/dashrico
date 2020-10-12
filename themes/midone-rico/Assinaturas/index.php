@@ -23,6 +23,7 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Loja</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Plano</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Status</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Pendências?</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">Ações</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                             <td class="border-b whitespace-no-wrap"><?= $assinatura->ricoshop()->nome_empresa ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $assinatura->plano()->nome ?></td>
                                             <td class="border-b whitespace-no-wrap"><?= $assinatura->verificarStatus() ?></td>
+                                            <td class="border-b whitespace-no-wrap <?= $assinatura->pendencias() ? 'text-theme-6' : 'text-theme-9' ?>"><?= $assinatura->pendencias() ? 'Sim' : 'Não' ?></td>
                                             <td class="border-b whitespace-no-wrap">
                                                 <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}/edit") ?>" class="button button--sm w-24 bg-theme-14 text-theme-10 col-span-2">Editar</a>
                                                 <a href="<?= url("/ricoshops/assinaturas/{$assinatura->id}/financeiro") ?>" class="button button--sm w-24 bg-theme-18 text-theme-9 col-span-2">Financeiro</a>
