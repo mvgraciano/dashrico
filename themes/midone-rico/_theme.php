@@ -65,12 +65,8 @@
                 </div>
                 <div class="dropdown-box w-56">
                     <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
-                        <div class="p-2">
-                            <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                        </div>
                         <div class="p-2 border-t border-theme-40 dark:border-dark-3">
-                            <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                            <a href="<?= url("/sair") ?>" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
                                 <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
                         </div>
                     </div>

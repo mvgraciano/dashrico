@@ -5,6 +5,7 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Core\Session;
 use Source\Model\AssinaturaRicoshop;
+use Source\Model\Auth;
 use Source\Model\LancamentoFinanceiro;
 
 class App extends Controller
@@ -17,6 +18,9 @@ class App extends Controller
 
     public function home()
     {
+        if (!$this->user = Auth::usuario()) {
+            redirect("/entrar");
+        }
         $month = date('m');
         $year = date('Y');
         $month_year = date('m/Y');
@@ -66,5 +70,44 @@ class App extends Controller
             "valor_aquisicao_receber_mes" => abs($valor_aquisicoes_receber_mes->valor_aquisicao_receber_mes),
             "valor_mensalidades_recebido_mes" => abs($valor_mensalidades_recebido_mes->valor_mensalidades_recebido_mes)
         ]);
+    }
+
+    public function login(array $data)
+    {
+        if (Auth::usuario()) {
+            redirect("/");
+        }
+        if (!empty($data['csrf'])) {
+            $success = true;
+            if (!csrf_verify($data)) {
+                $message = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $success = false;
+            }
+
+            if (empty($data['email']) || empty($data['password'])) {
+                $message = $this->message->warning("Informe seu e-mail e senha para entrar")->render();
+                $success = false;
+            }
+
+            if ($success) {
+                $auth = new Auth();
+                $login = $auth->login($data['email'], $data['password']);
+
+                if ($login) {
+                    redirect("/");
+                } else {
+                    $message = $auth->message()->before("Ooops! ")->render();
+                }
+            }
+        }
+
+        echo $this->view->render("login", ["message" => ($message ?? null)]);
+        
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        redirect("/entrar");
     }
 }

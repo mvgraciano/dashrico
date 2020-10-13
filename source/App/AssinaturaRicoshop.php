@@ -4,6 +4,7 @@ namespace Source\App;
 
 use Source\Core\Controller;
 use Source\Core\Session;
+use Source\Model\Auth;
 use Source\Model\PlanoRicoshop;
 use Source\Model\Ricoshop;
 use Source\Support\Pager;
@@ -14,6 +15,9 @@ class AssinaturaRicoshop extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        if (!$this->user = Auth::usuario()) {
+            redirect("/entrar");
+        }
         (new Session())->set("tab_active", "assinaturas");
     }
 

@@ -9,6 +9,12 @@ define("CONF_DB_PASS", "");
 define("CONF_DB_NAME", "ricodb");
 
 /**
+ * PASSWORD
+ */
+define("CONF_PASSWD_ALGO", PASSWORD_DEFAULT);
+define("CONF_PASSWD_OPTION", ["cost" => 10]);
+
+/**
  * PROJECT URLs
  */
 define("CONF_URL_BASE", "https://www.dashrico.com.br");

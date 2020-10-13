@@ -12,6 +12,10 @@ $route->namespace("Source\App");
 $route->group(null);
 $route->get("/", "App:home");
 
+$route->get("/entrar", "App:login");
+$route->post("/entrar", "App:login");
+$route->get("/sair", "App:logout");
+
 $route->group("/produtos");
 $route->get("/", "Produto:productsIndex");
 $route->get("/{page}", "Produto:productsIndex");

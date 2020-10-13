@@ -4,6 +4,7 @@ namespace Source\App;
 
 use Source\Core\Controller;
 use Source\Core\Session;
+use Source\Model\Auth;
 use Source\Model\Produto as ModelProduto;
 use Source\Support\Pager;
 
@@ -12,6 +13,9 @@ class Produto extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
+        if (!$this->user = Auth::usuario()) {
+            redirect("/entrar");
+        }
         (new ModelProduto())->reloadProducts();
         (new Session())->set("tab_active", "produtos");
     }
