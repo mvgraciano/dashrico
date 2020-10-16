@@ -40,7 +40,7 @@ class AssinaturaRicoshop extends Controller
         echo $this->view->render("Assinaturas/index", [
             "head" => $head,
             "title" => "Ricoshops - Assinaturas",
-            "assinaturas" => $assinaturas->fetch(true),
+            "assinaturas" => $assinaturas->limit($pager->limit())->offset($pager->offset())->fetch(true),
             "message" => ($message ?? null),
             "paginator" => ($paginator ?? null)
         ]);
