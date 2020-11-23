@@ -74,6 +74,19 @@ function is_email(string $email): bool
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+function is_cellphone(string $phone): bool
+{
+    if (!is_string($phone)) {
+        return false;
+    }
+
+    if (mb_strlen($phone) == 10) {
+        return false;
+    }
+
+    return true;
+}
+
 /**
  * ##################
  * ###   STRING   ###

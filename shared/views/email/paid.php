@@ -1,7 +1,7 @@
-<?php $v->layout("_theme", ["title" => "Pague a sua fatura"]); ?>
+<?php $v->layout("_theme", ["title" => "Olá caro cliente."]); ?>
 
-<h2>Olá <?= $nome ?>.</h2>
-<p>Você está recebendo este e-mail apenas como um lembrete, pois faltam menos de 15 dias para o vencimento de sua próxima fatura.</p>
-<p><b>Descrição da Fatura: </b><?= $lancamento->descricao ?></p>
-<p><b>Valor:</b> <?= brl_format($lancamento->valor) ?></p>
-<p><b>Vencimento:</b> <?= date_fmt($lancamento->vencimento, "d/m/Y") ?></p>
+<h2>Olá caro cliente.</h2>
+<p>A mensalidade de sua loja virtual com a Ricoshops está prestes as vencer.</p>
+<p>Acesse o link para o pagamento: https://link.pagar.me/lH1mAFj3Oew</p>
+<p>Assim que fizer o pagamento, enviar o comprovante em resposta a esse e-mail.</p>
+<p>O não pagamento dessa mensalidade até o dia de seu vencimento, ocasionará a suspensão dos serviços.</p>

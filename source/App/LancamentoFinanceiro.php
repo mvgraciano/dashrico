@@ -169,13 +169,10 @@ class LancamentoFinanceiro extends Controller
         $shop = $assinatura->ricoshop();
 
         $view = new View(__DIR__ . "/../../shared/views/email");
-        $message = $view->render("paid", [
-            "nome" => $shop->nome_empresa,
-            "lancamento" => $lancamento
-        ]);
+        $message = $view->render("paid", []);
 
         $mail = (new Email())->bootstrap(
-            "Olá cliente, pague a sua fatura",
+            "Olá caro cliente.",
             $message,
             $shop->email,
             $shop->nome_empresa
